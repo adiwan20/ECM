@@ -1,4 +1,4 @@
-class loginValidation{
+class login{
     email='input[name="email"]'
     key='input[name="key"]'
     loginButton='button[type="submit"]'
@@ -9,6 +9,11 @@ class loginValidation{
   //      cy.get(this.loginButton).click();
   //  return this;
   //  }
+  
+  launchURL() {
+    cy.visit(Cypress.env("baseUrl"));
+    return this;
+  }
   enterEmail(email) {
     cy.log("Entering Username : " + email);
     cy.get(this.email).type(email);
@@ -26,4 +31,4 @@ class loginValidation{
   }
 
 
-}export default loginValidation;
+}export default login;

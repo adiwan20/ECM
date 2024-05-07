@@ -4,9 +4,10 @@ class LoginDetails{
     loginButton='button[type="submit"]'
 
     verifyLogin(username,password){
-            cy.get(this.email).type(username)
-             cy.get(this.key).type(password)
-           cy.get(this.loginButton).click();
+    
+            cy.get(this.email).should("be.visible").type(username,{force:true})
+             cy.get(this.key).should("be.visible").type(password,{force:true})
+           cy.get(this.loginButton).click({force:true});
          return this;
     }
 }export default LoginDetails;

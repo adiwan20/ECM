@@ -1,11 +1,16 @@
 {
-    "username": "adiwan@health.saisystems.com",
-    "accesskey": "Abc@12345",
+   
     "firstname": "Abin",
     "lastname": "Thomas",
     "dob": "04/08/2020",
-    "gender": "male"
+    "gender": "male",
   
-   
+    
+      "loginPageTitle": "Enterprise Claims Management",
+      "validEmail":"adiwan@health.saisystems.com",
+      "invalidkey": "acbcbd",
+      "invalidEmail": "abcd@saisystems.com",
+      "validkey":"Abc@12345"
+    
   }
   

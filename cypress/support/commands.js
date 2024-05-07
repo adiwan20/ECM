@@ -23,17 +23,28 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-import loginPage from "../Pages/login"
+import loginPage from "../Pages/login.js"
 const loginpg=new loginPage();
+
+
+
 Cypress.Commands.add("loginToApp", (userName, key) => {
-    cy.session(
-      [userName, key],
-      () => {
-        loginpg
-         // .launchURL()
-          .enterEmail(userName)
-          .enterPassword(key)
-          .clickLoginButton();
-      },
-    );
-  });
+  cy.session(
+    [userName, key],
+    () => {
+      loginPg
+        .launchURL()
+        .enterEmail(userName)
+        .enterPassword(key)
+        .clickLoginButton();
+    },
+    {
+      cacheAcrossSpecs: true,
+    }
+  );
+});
+
+Cypress.Commands.add("clearSession", () => {
+  cy.clearAllLocalStorage();
+  cy.clearCookies();
+});

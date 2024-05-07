@@ -3,27 +3,22 @@ const loginPageValidation = new LoginPageD();
 
 describe("login scenario1",() => {
     beforeEach(() => {
-        
-       // cy.fixture('credentials.json').then((data) => {
-        //    cy.wrap(data).as('credentialsData');
-        //});
-        //cy.fixture("credentials.json").as("credentialsData");
-
-        cy.visit("https://pmsdevui.azurewebsites.net/")
-       // cy.fixture("Login/login.json").as('loginData')
-let loginData;
-        cy.fixture("Login/login.json").then((data)=>{
-            this.loginData=data;
-        })
+        cy.visit("https://pmsdevui.azurewebsites.net/");
+     
+        cy.fixture("Login/login.json").as(
+          "loginPageValidations"
+        );
+        cy.fixture("credentials.json").as("credentials");
 
     });
-        it("Verify successful login", () =>{
-   // cy.get('@credentialsData').then((credentialsData) =>{
-       // loginPageValidation.verifyLogin(this.loginData.username,this.loginData.accesskey);
-        //loginPageValidation.verifyLogin( "adiwan@health.saisystems.com","Abc@12345");
-       cy.loginToApp(this.loginData.username,this.loginData.accesskey)
-
-   // })
-    })
+   
+    it("Verify successful login", function() {
+        // Access the alias using this.credentials
+        const credentials = this.credentials;
+        loginPageValidation.verifyLogin(credentials.username, credentials.accesskey);
+      });
       
     })
+
+
+  
